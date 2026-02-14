@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anish & Vaishnavi · lighter shades</title>
+    <!-- soft fonts: dancing script for titles, lato for readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fef7f5;
+            /* lightest warm base */
+            font-family: 'Lato', sans-serif;
+            color: #4a3f3f;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .site-wrapper {
+            max-width: 750px;
+            width: 100%;
+            background-color: rgba(255, 250, 248, 0.7);
+            /* very airy */
+            backdrop-filter: blur(2px);
+            border-radius: 3rem 3rem 2rem 2rem;
+            box-shadow: 0 20px 40px -15px rgba(240, 170, 170, 0.3);
+            overflow: hidden;
+            border: 1px solid #ffe3df;
+        }
+
+        /* header with names – inspired by first screenshot */
+        .header-names {
+            text-align: center;
+            padding: 2rem 1.5rem 0.5rem 1.5rem;
+        }
+
+        .names-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.7rem;
+            font-weight: 600;
+            color: #b95858;
+            /* soft rose */
+            letter-spacing: 1px;
+        }
+
+        .names-row .heart {
+            font-size: 3rem;
+            color: #f3a7a7;
+            line-height: 1;
+            transform: translateY(-3px);
+        }
+
+        .stars-line {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #9e7b7b;
+            margin-top: 0.3rem;
+            font-weight: 400;
+            border-top: 2px dashed #fcd5ce;
+            border-bottom: 2px dashed #fcd5ce;
+            display: inline-block;
+            padding: 0.4rem 2rem;
+            background: #fffbfb;
+            border-radius: 50px;
+        }
+
+        /* navigation – light and soft */
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.7rem 1.2rem;
+            margin: 1.8rem 1.5rem 1rem;
+            padding: 0.6rem 1rem;
+            background: #ffe9e5;
+            /* lighter same-shade pink */
+            border-radius: 60px;
+            box-shadow: 0 5px 12px #fcd0c9;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #775e5e;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-btn:hover {
+            background: #ffd9d2;
+            /* a touch deeper but still light */
+            color: #5c4040;
+            transform: scale(1.02);
+        }
+
+        .nav-btn.active {
+            background: #ffc9c0;
+            /* lightest peachy active */
+            color: #4d2e2e;
+            font-weight: 500;
+            box-shadow: 0 2px 6px #fbb7ab;
+        }
+
+        /* main content card */
+        .content-card {
+            background: rgba(255, 245, 242, 0.8);
+            backdrop-filter: blur(4px);
+            margin: 0.8rem 1.5rem 2rem 1.5rem;
+            padding: 2rem 1.8rem;
+            border-radius: 2.5rem;
+            box-shadow: inset 0 1px 10px #fffcfc, 0 15px 25px -15px #efbfbf;
+            border: 1px solid #ffdad2;
+            transition: all 0.2s;
+        }
+
+        /* buttons inside content */
+        .btn {
+            background: #ffded5;
+            /* lighter version of the shade */
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'Lato', sans-serif;
+            border-radius: 50px;
+            color: #5d3e3e;
+            font-weight: 500;
+            box-shadow: 0 6px 12px #fccac2;
+            cursor: pointer;
+            transition: 0.15s;
+            border: 1px solid #ffc9bc;
+            margin: 0.8rem 0 0.4rem 0;
+        }
+
+        .btn:hover {
+            background: #ffd0c4;
+            box-shadow: 0 8px 14px #fbbaaa;
+            transform: translateY(-2px);
+        }
+
+        .btn.small {
+            padding: 0.4rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        h2,
+        h3 {
+            font-family: 'Dancing Script', cursive;
+            color: #ab6363;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            margin-bottom: 1.2rem;
+            border-bottom: 2px dotted #fccbc1;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        /* letter content hidden / show */
+        .letter-content {
+            background: #fff9f7;
+            border-radius: 30px;
+            padding: 1.5rem;
+            margin: 1rem 0 0.5rem;
+            border: 1px solid #fecfbf;
+            box-shadow: inset 0 0 15px #ffe7df;
+            font-size: 1.1rem;
+            color: #4d3b3b;
+        }
+
+        .letter-content p {
+            margin: 0.8rem 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* reminders list */
+        .reminder-list {
+            list-style: none;
+        }
+
+        .reminder-list li {
+            background: #fff6f2;
+            margin: 1rem 0;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            border: 1px solid #ffd5c8;
+            box-shadow: 0 4px 8px #fcdcd2;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .reminder-list li::before {
+            content: "💌";
+            font-size: 1.5rem;
+            filter: drop-shadow(0 2px 2px #feb5a5);
+        }
+
+        /* more letters items */
+        .letter-item {
+            background: #fff9f5;
+            border-radius: 40px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #fecbbd;
+        }
+
+        .letter-item h3 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .flex-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* small extras */
+        .kiddo-tag {
+            font-size: 1.9rem;
+            font-family: 'Dancing Script', cursive;
+            color: #b77b7b;
+            background: #ffefea;
+            padding: 0.4rem 2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 1rem 0 0.5rem;
+            border: 2px solid #fec7b6;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #a45e5e;
+            margin-top: 1rem;
+        }
+
+        /* heart accent */
+        .divider {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #fbb9aa;
+            margin: 0.6rem 0;
+        }
+
+        /* mobile fine-tune */
+        @media (max-width: 500px) {
+            .names-row {
+                font-size: 2rem;
+            }
+
+            .stars-line {
+                font-size: 1.2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 0.6rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="site-wrapper">
+        <!-- header section exactly from first screenshot "Anish / Vaishnavi / stars / kiddo" -->
+        <div class="header-names">
+            <div class="names-row">
+                <span>Vaishnavi</span>
+                <span class="heart">❤️</span>
+                <span>Anish</span>
+            </div>
+            <div class="stars-line">A Tale of Two Pigs 😂❤️</div>
+            <div class="kiddo-tag">✨ My Little Kiddo ✨</div>
+        </div>
+
+        <!-- navigation (lighter shade bar) -->
+        <nav class="nav-bar">
+            <button class="nav-btn active" id="nav-home">Home</button>
+            <button class="nav-btn" id="nav-special">Special Letter</button>
+            <button class="nav-btn" id="nav-more">More Letters</button>
+            <button class="nav-btn" id="nav-reminders">Reminders</button>
+        </nav>
+
+        <!-- dynamic content card -->
+        <main class="content-card" id="main-content">
+            <!-- home page by default (matches first screenshot with open letter button) -->
+            <div id="home-view">
+                <div style="text-align: center;">
+                    <div class="divider">～ ～ ～</div>
+                    <p style="font-size: 1.4rem; margin: 1rem 0 0.3rem; color:#886060;">a heart written in the stars</p>
+                    <button class="btn" id="home-open-special">Open Our Special Letter</button>
+                    <div style="margin-top: 2rem; font-size: 1rem; color:#b48686;"><i>click the letter to begin</i>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- tiny footer for charm -->
+        <div style="text-align: center; padding: 0.2rem 0 1.5rem 0; color: #d7a1a1; font-size: 0.9rem;">💕 forever
+            light, forever yours 💕</div>
+    </div>
+
+    <script>
+        (function () {
+            // ----- get elements -----
+            const main = document.getElementById('main-content');
+            const navHome = document.getElementById('nav-home');
+            const navSpecial = document.getElementById('nav-special');
+            const navMore = document.getElementById('nav-more');
+            const navReminders = document.getElementById('nav-reminders');
+            const navBtns = [navHome, navSpecial, navMore, navReminders];
+
+            // helper to remove active class from all nav
+            function setActiveNav(activeBtn) {
+                navBtns.forEach(btn => btn.classList.remove('active'));
+                activeBtn.classList.add('active');
+            }
+
+            // ----- page render functions (each returns html + needs attached events) -----
+            function renderHome() {
+                main.innerHTML = `
+                <div id="home-view">
+                    <div style="text-align: center;">
+                        <div class="divider">🌸 🌸 🌸</div>
+                        <p style="font-size: 1.5rem; margin: 1rem 0 0.3rem; font-family: 'Dancing Script', cursive; color:#b16161;">"My Little Kiddo"</p>
+                        <p style="font-size: 1.2rem; margin-bottom: 1.8rem; color:#8f6b6b;">a tale of two hearts ...</p>
+                        <button class="btn" id="home-open-special">Open Our Special Letter</button>
+                        <div style="margin-top: 2rem; font-size: 1rem; color:#b48686;"><i>click to open your letter</i></div>
+                    </div>
+                </div>
+            `;
+                // attach listener to the button to go to special page
+                document.getElementById('home-open-special').addEventListener('click', () => {
+                    renderSpecial();
+                    setActiveNav(navSpecial);
+                });
+            }
+
+            function renderSpecial() {
+                main.innerHTML = `
+                <div class="special-page">
+                    <h2>💌 a Special Letter For You</h2>
+                    <button class="btn" id="toggleSpecialBtn">Click to open</button>
+                    <div id="specialLetterContent" class="letter-content hidden">
+                        <p>MERI PYARI SI BETU 😊❤️💋🧿
+                            My Precious Vaishnavi 💕
+
+My sweet little sunshine ☀️💗
+
+Every time I look at you, I still get that soft feeling in my chest… the one that makes me pause and think, “How did I get so lucky?” 🥺❤️ You don’t just make my world brighter — you are the light that fills it.
+
+Your eyes… they shine like the warm morning sun ☀️✨
+When you look at me, I feel calm. Safe. Chosen. It’s like your eyes speak to me without words, telling me you trust me — and I promise I will always protect that trust 🤍
+
+And those cheeks of yours… my sweet little rasgulla 😌🍥💕
+So soft, so adorable, so perfectly squeezable. I love holding them gently, teasing you just to see you blush or pretend to be angry 🥹💞 They’re my favorite source of happiness. Whenever you smile, those cheeks lift slightly, and I swear my heart melts every single time.
+
+Your wavy hair… 🖤🌊
+Those soft waves falling around your face make you look so beautiful and delicate. I love running my fingers through them slowly, fixing them when they get messy, playing with them just to feel close to you. It’s such a simple thing, but it makes me feel connected to you in the sweetest way 🤍
+
+And your lips… ❤️
+They’re my weakness. The way they curve when you smile, the way they pout when you’re pretending to be upset 😌 I love them more than I can explain. They’re soft, warm, and the beginning of every beautiful smile you give me.
+
+My little one 🥺💗
+Even when you act strong, independent, and brave — to me, you’ll always be my precious girl. The one I want to protect from every worry. The one I want to comfort when she feels overwhelmed. The one whose tears I never want to see.
+
+If you ever feel tired, I’m here 🤍
+If you ever feel insecure, I’ll remind you how beautiful you are 🌸
+If you ever doubt yourself, I’ll stand beside you until you believe again 💪💞
+
+You are safe with me. Always. 🛡️❤️
+You are loved more deeply than you know.
+You are cherished in ways words can’t fully describe.
+
+I don’t just love you in happy moments.
+I love you when you’re quiet.
+I love you when you’re emotional.
+I love you when you’re being silly.
+I love you in every version of you 💕✨
+
+Your happiness matters to me. Your comfort matters to me. Your smile is my favorite reward 😊💖
+
+So whenever you read this, I want you to hug yourself a little tighter and remember — you are adored, protected, and deeply, deeply loved by your Anish 🤍💍
+
+Stay my glowing sunshine ☀️
+Stay my sweet rasgulla 🍥💕
+Stay my heart.
+
+Forever yours,
+Anish 💞✨</p>
+                        <div style="font-size:1rem; margin-top:1rem;">❤️</div>
+                    </div>
+                    <div style="margin-top: 1.5rem; font-style: italic; color:#a57575;">"written in the stars, sealed with a kiss"</div>
+                </div>
+            `;
+                const toggleBtn = document.getElementById('toggleSpecialBtn');
+                const letterDiv = document.getElementById('specialLetterContent');
+                toggleBtn.addEventListener('click', function () {
+                    if (letterDiv.classList.contains('hidden')) {
+                        letterDiv.classList.remove('hidden');
+                        toggleBtn.textContent = 'Click to close';
+                    } else {
+                        letterDiv.classList.add('hidden');
+                        toggleBtn.textContent = 'Click to open';
+                    }
+                });
+            }
+
+            function renderMoreLetters() {
+                main.innerHTML = `
+                <div class="more-letters-page">
+                    <h2>📜 more letters</h2>
+                    <div class="letter-item">
+                        <div class="flex-row">
+                            <h3>🌸 My Little Sunshine</h3>
+                            <button class="btn small toggle-letter" data-target="letter1">read</button>
+                        </div>
+                        <div id="letter1" class="letter-content hidden">
+                            <p>Vaishnavi ☀️💗
+                            Your eyes shine brighter than the sun, and every time you look at me, my whole world feels warm again. Your rasgulla cheeks 🥺💕 are my favorite thing to gently hold and tease, just to see that adorable smile appear.
+                            
+                            No matter what happens, remember this — you are safe with me 🤍 I will always protect your smile, comfort your heart, and remind you how precious you are.
+                            
+                            You’re not just loved… you’re deeply treasured ❤️✨
+                            
+                            — Your Anish
+                            
+                            </p>
+                        </div>
+                    </div>
+                    <div class="letter-item">
+                        <div class="flex-row">
+                            <h3>🍥 My Sweetest Rasgulla</h3>
+                            <button class="btn small toggle-letter" data-target="letter2">read</button>
+                        </div>
+                        <div id="letter2" class="letter-content hidden">
+                            <p>My cute little one 🥹💞
+                            
+                            Those soft cheeks of yours? Completely unfair. I just want to squish them and see you pretend to get mad 😌💕 Your wavy hair falling around your face makes you look so beautiful, and I love playing with it while you sit close to me 🖤🌊
+                            
+                            And your lips… my biggest weakness ❤️
+                            Your smile starts there, and that smile is my favorite sight in the world.
+                            
+                            If you ever feel small or unsure, remember — to me, you are everything. I’m always right here 🤍
+                            
+                            — Forever yours, Anish</p>
+                        </div>
+                    </div>
+                    <div class="letter-item">
+                        <div class="flex-row">
+                            <h3>🌷 Always Protected</h3>
+                            <button class="btn small toggle-letter" data-target="letter3">read</button>
+                        </div>
+                        <div id="letter3" class="letter-content hidden">
+                            <p>My precious Vaishnavi 💗
+
+You may act strong, but you’ll always be my little sunshine ☀️ The one I want to protect from every tear, every fear, every doubt.
+
+When you’re happy, I feel complete 😊
+When you’re quiet, I stay close 🤍
+When you need comfort, my arms are your home 💞
+
+Your glowing eyes, your sweet rasgulla cheeks, your soft wavy hair… everything about you makes me fall for you again and again.
+
+Don’t ever forget — you are loved endlessly ❤️✨
+
+— Your Anish</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            `;
+                // attach toggle events to all "read" buttons inside more letters
+                const toggleButtons = document.querySelectorAll('.toggle-letter');
+                toggleButtons.forEach(btn => {
+                    btn.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('data-target');
+                        const letterDiv = document.getElementById(targetId);
+                        if (letterDiv.classList.contains('hidden')) {
+                            letterDiv.classList.remove('hidden');
+                            this.textContent = 'close';
+                        } else {
+                            letterDiv.classList.add('hidden');
+                            this.textContent = 'read';
+                        }
+                    });
+                });
+            }
+
+            function renderReminders() {
+                main.innerHTML = `
+                <div class="reminders-page">
+                    <h2>☁️ reminders for you 😁🙌</h2>
+                    <ul class="reminder-list">
+                        <li>MERI PYAARI SI BACHI MERI RASSGULLA HO TUM 😊💕</li>
+                        <li>I AM FOR YOU... SO YOU CAN SHARE EVERYTHING TO ME 😘❤️</li>
+                        <li>I AM FOREVER YOURS AND I'll TAKE CARE OF YOU LIKE A KID SO DONT WORRY 😊💕🤞</li>
+                        <li>YOU ARE NOT ALLOWED TO CRY IN SILENCE... YOU MUST SMILE AND TELL ME YOUR CONDITIONS ^_^💕🤞😁</li>
+                        <li>YOU AND I BELONG TOGETHER FOREVER ❤️🤞</li>
+                        <li>YOU WILL BE MY CHILD NO MATTER HOW EVER YOU CHANGE OR GO THROUGH MOODSWINGS 😂💕🙌</li>
+                    </ul>
+                    <div style="text-align: center; margin-top: 2rem;">✨ always remember, you are deeply loved ✨</div>
+                </div>
+            `;
+            }
+
+            // ----- navigation event listeners -----
+            navHome.addEventListener('click', () => {
+                renderHome();
+                setActiveNav(navHome);
+            });
+
+            navSpecial.addEventListener('click', () => {
+                renderSpecial();
+                setActiveNav(navSpecial);
+            });
+
+            navMore.addEventListener('click', () => {
+                renderMoreLetters();
+                setActiveNav(navMore);
+            });
+
+            navReminders.addEventListener('click', () => {
+                renderReminders();
+                setActiveNav(navReminders);
+            });
+
+            // set default home view + active (home already active from html)
+            renderHome();  // home content
+            // but we need to make sure home button active (already has class active)
+            // however renderHome overwrites, and active class remains on home because we didn't change it.
+            // But if we want to be safe:
+            setActiveNav(navHome);
+
+            // bonus: if someone clicks home-open-special from initial render, it's attached inside renderHome
+        })();
+    </script>
+</body>
+
+</html>
